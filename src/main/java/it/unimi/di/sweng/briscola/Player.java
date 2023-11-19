@@ -7,10 +7,6 @@ import java.util.Iterator;
 import java.util.List;
 
 public class Player implements Comparable<Player>, Iterable<Card> {
-
-  // TODO rendere la classe Comparable con altri Player confrontando i punteggi
-  // TODO rendere la classe Iterable sulle carte che ha in mano
-
   private @NotNull final String name;
   private @NotNull final List<Card> cards = new ArrayList<>();
   private @NotNull final List<Card> personalDeck = new ArrayList<>();
