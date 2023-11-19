@@ -85,6 +85,6 @@ public class Player implements Comparable<Player>{
 
   @Override
   public int compareTo(@NotNull Player o) {
-    return 0;
+    return Integer.compare(getPoints(), o.getPoints());
   }
 }
