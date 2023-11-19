@@ -49,6 +49,7 @@ public class Briscola {
     if(sameSeed(first, second)){
       return first.getRank().points() > second.getRank().points() ? firstCardPlayer : otherPlayer(firstCardPlayer);
     }else{
+      if(isBriscola(second)) return otherPlayer(firstCardPlayer);
       return firstCardPlayer;
     }
   }
