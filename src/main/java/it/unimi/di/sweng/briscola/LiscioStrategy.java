@@ -10,6 +10,9 @@ public class LiscioStrategy implements Strategy{
     }
     @Override
     public @NotNull Card chooseCard(@NotNull Player me, @NotNull Player other, @NotNull Suit briscola) {
+        for (Card card: me) {
+            if(card.getSuit()!=briscola && card.getRank().points()==0) return card;
+        }
         return next.chooseCard(me, other, briscola);
     }
 }
