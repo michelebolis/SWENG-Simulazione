@@ -14,4 +14,13 @@ public class PlayerTest {
         p1.addWonCardsToPersonalDeck(Card.get(Rank.ASSO, Suit.BASTONI), Card.get(Rank.DUE, Suit.BASTONI));
         assertThat(p1.compareTo(p2)).isEqualTo(1);
     }
+    @Test
+    public void PlayerComparableTest(){
+        Player p1 = new Player("P1");
+        Player p2 = new Player("P2");
+        p1.addWonCardsToPersonalDeck(Card.get(Rank.ASSO, Suit.BASTONI), Card.get(Rank.DUE, Suit.BASTONI));
+        assertThat(p2.compareTo(p1)).isEqualTo(-1);
+        p2.addWonCardsToPersonalDeck(Card.get(Rank.ASSO, Suit.BASTONI), Card.get(Rank.DUE, Suit.BASTONI));
+        assertThat(p2.compareTo(p1)).isEqualTo(0);
+    }
 }
