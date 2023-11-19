@@ -47,4 +47,9 @@ public class BriscolaTest {
         Card cardPerdente = Card.get(Rank.DUE, Suit.SPADE);
         assertThat(Optional.of(partita.establishTurnWinner(cardVincente, cardPerdente))).isEqualTo(Optional.of(p1));
     }
+    @Test
+    public void establishGameWinnerP1Test(){
+        when(p1.compareTo(p2)).thenReturn(1);
+        assertThat(Optional.of(partita.establishGameWinner())).isEqualTo(Optional.of(p1));
+    }
 }
