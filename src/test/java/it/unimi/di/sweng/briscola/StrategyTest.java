@@ -34,4 +34,12 @@ public class StrategyTest {
         when(p1.iterator()).thenReturn(mockedHand.iterator());
         assertThat(new LiscioStrategy(null).chooseCard(p1, p2, Suit.BASTONI)).isEqualTo(Card.get(Rank.QUATTRO, Suit.SPADE));
     }
+    @Test
+    public void LiscioBriscolaStrategy(){
+        List<Card> mockedHand = List.of(Card.get(Rank.ASSO, Suit.COPPE),
+                Card.get(Rank.DUE, Suit.BASTONI),
+                Card.get(Rank.QUATTRO, Suit.SPADE));
+        when(p1.iterator()).thenReturn(mockedHand.iterator());
+        assertThat(new LiscioBriscolaStrategy(null).chooseCard(p1, p2, Suit.BASTONI)).isEqualTo(Card.get(Rank.DUE, Suit.BASTONI));
+    }
 }
