@@ -46,10 +46,14 @@ public class Briscola {
 
   @NotNull  // spostato a livello private package per facilitarne il testing
   Player establishTurnWinner(@NotNull Card first, @NotNull Card second) {
-    if((first.getSuit()==second.getSuit())){
+    if(sameSeed(first, second)){
       return first.getRank().points() > second.getRank().points() ? firstCardPlayer : otherPlayer(firstCardPlayer);
     }
     return null;
+  }
+
+  private static boolean sameSeed(@NotNull Card first, @NotNull Card second) {
+    return first.getSuit() == second.getSuit();
   }
 
   public void giveEachPlayerOneCard() {
