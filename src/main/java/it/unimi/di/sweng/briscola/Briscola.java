@@ -88,8 +88,7 @@ public class Briscola {
 
   @NotNull
   public Player establishGameWinner() {
-    // TODO identifica (e restituisce) il vincitore della partita (o un NULL OBJECT adatto in caso di pareggio)
-    return null;
+    return firstCardPlayer.compareTo(otherPlayer(firstCardPlayer)) > 0 ? firstCardPlayer : otherPlayer(firstCardPlayer);
   }
 
   @NotNull
