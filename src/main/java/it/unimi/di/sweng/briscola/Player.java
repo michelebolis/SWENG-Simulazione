@@ -13,11 +13,13 @@ public class Player implements Comparable<Player>, Iterable<Card> {
   private @NotNull Strategy firstStrategy ;
   private @NotNull Strategy secondStrategy ;
   private Card chosenCard;
-
+  public static Player NESSUNO = new Player();
+  private Player() {
+    name = "NESSUNO";
+  }
   public Player(@NotNull String name) {
     this.name = name;
   }
-
   public void setFirstStrategy(@NotNull Strategy firstStrategy) {
     this.firstStrategy = firstStrategy;
   }
