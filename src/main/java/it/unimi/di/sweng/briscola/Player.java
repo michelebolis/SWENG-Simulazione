@@ -92,6 +92,6 @@ public class Player implements Comparable<Player>, Iterable<Card> {
   @NotNull
   @Override
   public Iterator<Card> iterator() {
-    return null;
+    return cards.iterator();
   }
 }
