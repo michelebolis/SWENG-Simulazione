@@ -52,4 +52,9 @@ public class BriscolaTest {
         when(p1.compareTo(p2)).thenReturn(1);
         assertThat(Optional.of(partita.establishGameWinner())).isEqualTo(Optional.of(p1));
     }
+    @Test
+    public void establishGameWinnerP2Test(){
+        when(p1.compareTo(p2)).thenReturn(-1);
+        assertThat(Optional.of(partita.establishGameWinner())).isEqualTo(Optional.of(p2));
+    }
 }
