@@ -48,8 +48,9 @@ public class Briscola {
   Player establishTurnWinner(@NotNull Card first, @NotNull Card second) {
     if(sameSeed(first, second)){
       return first.getRank().points() > second.getRank().points() ? firstCardPlayer : otherPlayer(firstCardPlayer);
+    }else{
+      return firstCardPlayer;
     }
-    return null;
   }
 
   private static boolean sameSeed(@NotNull Card first, @NotNull Card second) {
