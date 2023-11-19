@@ -88,7 +88,11 @@ public class Briscola {
 
   @NotNull
   public Player establishGameWinner() {
-    return firstCardPlayer.compareTo(otherPlayer(firstCardPlayer)) > 0 ? firstCardPlayer : otherPlayer(firstCardPlayer);
+      return switch (firstCardPlayer.compareTo(otherPlayer(firstCardPlayer))) {
+          case 1 -> firstCardPlayer;
+          case -1 -> otherPlayer(firstCardPlayer);
+          default -> Player.NESSUNO;
+      };
   }
 
   @NotNull
