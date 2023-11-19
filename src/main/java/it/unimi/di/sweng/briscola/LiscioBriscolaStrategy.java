@@ -3,11 +3,17 @@ package it.unimi.di.sweng.briscola;
 import org.jetbrains.annotations.NotNull;
 
 public class LiscioBriscolaStrategy implements Strategy{
+    private final Strategy next;
+
     public LiscioBriscolaStrategy(Strategy next) {
+        this.next = next;
     }
 
     @Override
     public @NotNull Card chooseCard(@NotNull Player me, @NotNull Player other, @NotNull Suit briscola) {
-        return null;
+        for (Card card:me) {
+            if(card.getSuit()==briscola && card.getRank().points()==0) return card;
+        }
+        return next.chooseCard(me, other, briscola);
     }
 }
