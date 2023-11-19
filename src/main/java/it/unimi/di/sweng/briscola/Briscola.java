@@ -46,8 +46,15 @@ public class Briscola {
 
   @NotNull  // spostato a livello private package per facilitarne il testing
   Player establishTurnWinner(@NotNull Card first, @NotNull Card second) {
-    // TODO identifica (e restituisce) il vincitore del turno applicando le regole alle due carte giocate
-    return null;
+    if(sameSeed(first, second)){
+      return first.getRank().points() > second.getRank().points() ? firstCardPlayer : otherPlayer(firstCardPlayer);
+    }else{
+      return isBriscola(second) ? otherPlayer(firstCardPlayer) : firstCardPlayer;
+    }
+  }
+
+  private static boolean sameSeed(@NotNull Card first, @NotNull Card second) {
+    return first.getSuit() == second.getSuit();
   }
 
   public void giveEachPlayerOneCard() {
@@ -81,8 +88,11 @@ public class Briscola {
 
   @NotNull
   public Player establishGameWinner() {
-    // TODO identifica (e restituisce) il vincitore della partita (o un NULL OBJECT adatto in caso di pareggio)
-    return null;
+      return switch (firstCardPlayer.compareTo(otherPlayer(firstCardPlayer))) {
+          case 1 -> firstCardPlayer;
+          case -1 -> otherPlayer(firstCardPlayer);
+          default -> Player.NESSUNO;
+      };
   }
 
   @NotNull
