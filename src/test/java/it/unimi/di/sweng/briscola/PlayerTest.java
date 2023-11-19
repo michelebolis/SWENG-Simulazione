@@ -1,8 +1,13 @@
 package it.unimi.di.sweng.briscola;
 
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -22,5 +27,18 @@ public class PlayerTest {
         assertThat(p2.compareTo(p1)).isEqualTo(-1);
         p2.addWonCardsToPersonalDeck(Card.get(Rank.ASSO, Suit.BASTONI), Card.get(Rank.DUE, Suit.BASTONI));
         assertThat(p2.compareTo(p1)).isEqualTo(0);
+    }
+    @Test
+    public void PlayerIterable(){
+        Player p1 = new Player("P1");
+        List<Card> cards = List.of(Card.get(Rank.ASSO, Suit.BASTONI), Card.get(Rank.ASSO, Suit.DENARI), Card.get(Rank.ASSO, Suit.SPADE));
+        for (Card card: cards) {
+            p1.giveCard(card);
+        }
+        ArrayList<Card> listaCard = new ArrayList<>();
+        for (Card card:p1) {
+            listaCard.add(card);
+        }
+        assertThat(listaCard).containsExactlyInAnyOrderElementsOf(cards);
     }
 }
