@@ -46,7 +46,9 @@ public class Briscola {
 
   @NotNull  // spostato a livello private package per facilitarne il testing
   Player establishTurnWinner(@NotNull Card first, @NotNull Card second) {
-    // TODO identifica (e restituisce) il vincitore del turno applicando le regole alle due carte giocate
+    if((first.getSuit()==second.getSuit())){
+      return first.getRank().points() > second.getRank().points() ? firstCardPlayer : otherPlayer(firstCardPlayer);
+    }
     return null;
   }
 
